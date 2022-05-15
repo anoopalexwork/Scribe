@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://words.gd" type="Script" id=1]
+[ext_resource path="res://Board.gd" type="Script" id=2]
+[ext_resource path="res://gfxBoard.gd" type="Script" id=4]
+[ext_resource path="res://Search.gd" type="Script" id=5]
+[ext_resource path="res://HUD.gd" type="Script" id=6]
+[ext_resource path="res://Xolonium-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://charInput.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+font_data = ExtResource( 7 )
+
+[node name="Scribe" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="search" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="gb" type="Container" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charInput" type="Container" parent="."]
+visible = false
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="New" type="Button" parent="HUD"]
+margin_left = 1210.0
+margin_top = 82.317
+margin_right = 1275.0
+margin_bottom = 122.317
+custom_fonts/font = SubResource( 1 )
+text = "New"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="HUD"]
+margin_left = 1210.0
+margin_top = 250.0
+margin_right = 1275.0
+margin_bottom = 290.0
+custom_fonts/font = SubResource( 2 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="words" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="HUD/New" to="HUD" method="_on_New_pressed"]
+[connection signal="pressed" from="HUD/Quit" to="HUD" method="_on_Quit_pressed"]
